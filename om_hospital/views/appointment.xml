@@ -48,11 +48,14 @@
 
                     <notebook>
                         <page string="Doctors Prescription">
-
+                            <group>
+                                <field name="doctor_note"/>
+                            </group>
                         </page>
-
                         <page string="Pharmacy">
-
+                            <group>
+                                <field name="pharmacy_note"/>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>
