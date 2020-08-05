@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <odoo>
-
+    #Hide print button and option for printing the patient report tag by, adding menu= false
     <report
         id="report_patient_card"
         string="Patient Card"
         model="hospital.patient"
         report_type="qweb-pdf"
+        menu="False"
         name="om_hospital.report_patient"
         file="om_hospital.report_patient"
         />
