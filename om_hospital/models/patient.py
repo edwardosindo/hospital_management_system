@@ -69,6 +69,7 @@ class HospitalPatient(models.Model):
         ('minor', 'Minor'),
     ], string="Age Group", compute='set_age_group')
     appointment_count = fields.Integer(string='Appointment', compute='get_appointment_count')
+    active = fields.Boolean('Active', default=True)
 
     @api.model
     def create(self, vals):
