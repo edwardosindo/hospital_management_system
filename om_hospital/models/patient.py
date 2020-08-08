@@ -58,6 +58,7 @@ class HospitalPatient(models.Model):
     notes = fields.Text(string='Notes')
     image = fields.Binary(string='Image')
     name = fields.Char(string='Test')
+    doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     name_seq = fields.Char(string='Patient ID', required=True, copy=False, readonly=True, index=True,
                            default=lambda self: _('New'))
     gender =fields.Selection([
