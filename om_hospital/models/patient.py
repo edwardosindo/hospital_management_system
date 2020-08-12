@@ -55,7 +55,6 @@ class HospitalPatient(models.Model):
 
     @api.onchange('doctor_id')
     def set_doctor_gender(self):
-        print("Entering Here")
         for rec in self:
             if rec.doctor_id:
                 rec.doctor_gender = rec.doctor_id.gender
