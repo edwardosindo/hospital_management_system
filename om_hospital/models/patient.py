@@ -53,12 +53,25 @@ class HospitalPatient(models.Model):
         count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
         self.appointment_count = count
 
+    @api.onchange('doctor_id')
+    def set_doctor_gender(self):
+        print("Entering Here")
+        for rec in self:
+            if rec.doctor_id:
+                rec.doctor_gender = rec.doctor_id.gender
+
+
+
     patient_name = fields.Char(string='Name', required=True, track_visibility="always")
     patient_age = fields.Integer('Age', track_visibility="always")
     notes = fields.Text(string='Notes')
     image = fields.Binary(string='Image')
     name = fields.Char(string='Test')
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
+    doctor_gender = fields.Selection([
+        ('male', 'Male'),
+        ('fe_male', 'Female'),
+    ], string="Doctor Gender")
     name_seq = fields.Char(string='Patient ID', required=True, copy=False, readonly=True, index=True,
                            default=lambda self: _('New'))
     gender =fields.Selection([
